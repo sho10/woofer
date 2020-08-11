@@ -5,7 +5,7 @@ class Pet < ApplicationRecord
   validates :age, numericality: {only_integer: true}
   validates :description, length: {maximum: 120}
   has_many_attached :photos
-  acts_as_taggable_on :personalities, :preferences
+  #acts_as_taggable_on :personalities, :preferences
   GENDER = ["Male", "Female"]
   PERSONALITY = ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"]
   PREFERNECE = ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"]

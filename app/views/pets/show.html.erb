@@ -1,0 +1,30 @@
+<div class="myfriends-title" id="my-pet-picture-photo">
+  <h1><%= current_user.pet.name %> Pictures</h1>
+</div>
+<div class="button-chat" id="upload-button">Upload Photo</div>
+<%= simple_form_for(@pet) do |f| %>
+  <%= f.input :photos, as: :file, label: false, input_html: { multiple: true } %>
+<% end %>
+<div class="show-pet-card">
+  <% @pet.photos.each do |photo| %>
+    <div class="show-pet-card-card">
+      <%=cl_image_tag(photo.key, class: "show-pet-card-images", height: 150, width:100, crop: :fill)  %>
+      <div class="show-pet-card-delete">
+        <%= link_to delete_image_attachment_collection_path(photo.signed_id),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, class: "button-photo-delete" do %>
+          <i class="fas fa-minus-square"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script>
+  const uploadButton = document.querySelector("#upload-button")
+  const petPhotos = document.querySelector("#pet_photos");
+  const form = document.querySelector(".edit_pet");
+  petPhotos.addEventListener("change", () => form.submit())
+  uploadButton.addEventListener("click", () => {
+    petPhotos.click()
+  });
+</script>

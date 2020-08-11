@@ -1,0 +1,67 @@
+<div class="myfriends-title">
+  <h1><%= current_user.pet.name %>'s Friends</h1>
+</div>
+<div class="cards">
+  <% @friends.each do |friend| %>
+    <% if friend.pet %>
+      <div class="card-dog-big">
+        <div class="card-dog">
+          <div class="card-dog-dphoto">
+            <% if friend.pet.photos.attached? %>
+              <%= cl_image_tag(friend.pet.photos.first.key, class: "avatar-pet") %>
+            <% else %>
+              <%= cl_image_tag("my_pet", class: "avatar-pet") %>
+            <% end %>
+          </div>
+          <div class="pet-info">
+            <div>
+              <h5> <%= friend.pet.name %> </h5>
+              <p> <%= friend.pet.breed %></p>
+            </div>
+            <div class="card-dog-info">
+              <div class="card-dog-info-inside">
+                <span><%= friend.pet.age %></span>
+              </div>
+              <div class="card-dog-info-inside">
+                <% if friend.pet.gender == "male" %>
+                  <i class="fas fa-mars"></i>
+                <% else %>
+                  <i class="fas fa-venus"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="card-dog-user">
+            <% if friend.photo.attached? %>
+              <%= cl_image_tag(friend.photo.key, class: "avatar-bordered")%>
+            <% else %>
+              <%= cl_image_tag("default-avatar", class: "avatar-bordered") %>
+            <% end %>
+            <div class="card-dog-user-info">
+              <p>Owner</p>
+              <p><strong> <%= friend.first_name %></strong></p>
+            </div>
+            <!-- <i class="fas fa-user-slash btn reject" id="sweet-alert-demo"></i> -->
+          </div>
+          <div class="tab-button-chat">
+            <div class="tab-button-chat-i">
+              <%= link_to new_pet_rating_url(@pet), class: "button-chat" do %>
+                <i class="fas fa-bone"></i> Rate
+              <% end %>
+            </div>
+            <div class="tab-button-chat-i">
+              <%= link_to chats_path, class: "button-chat" do%>
+                <i class="fas fa-comment-dots "></i> Chat
+              <% end %>
+            </div>
+            <div class="tab-button-chat-i">
+              <%= link_to map_path, class: "button-chat" do %>
+                <i class="fas fa-map-marker-alt"></i> Map
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

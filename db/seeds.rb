@@ -236,8 +236,8 @@ james.save!
     age: 4,
     breed: "Bulldog",
     description: "My dog likes to sleep all day long",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(1),
-    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(2)
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy" ,"Adaptable"].sample(1),
+    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable", "Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(2)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','bulldog1.jpeg'))
   pet.photos.attach(io: file, filename: "bulldog1.jpeg", content_type: 'image/jpeg')

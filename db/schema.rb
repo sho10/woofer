@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_085243) do
     t.string "name"
     t.string "gender"
     t.integer "age"
+    t.text "personality_list"
+    t.text "preference_list"
     t.string "breed"
     t.bigint "user_id"
     t.text "description"
